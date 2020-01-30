@@ -6,52 +6,64 @@
 
 <h2>ToDo: ADD</h2>
 
-<form action="{% url 'todolist:todoview' %}" class="center" method="POST">
-    {% csrf_token %}
-    <div class="row">
-        <div class="col s8 input-field">
-            <label for="item"><b>Add Task</b></label>
-            <input type="text" name="item">
-        </div>
-        <div class="col s4">
-            <button class="btn-floating btn-large waves-effect waves-light red pulse" type="submit"><i class="material-icons">add</i></button>
-        </div>
-    </div>
-</form>
-<br>
-<br>
+{% if user.is_authenticated %}
 
-{% if todo_list %}
+    <form action="{% url 'todolist:todoview' %}" class="center" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col s8 input-field">
+                <label for="item"><b>Add Task</b></label>
+                <input type="text" name="item">
+            </div>
+            <div class="col s4">
+                <button class="btn-floating btn-large waves-effect waves-light red pulse" type="submit"><i class="material-icons">add</i></button>
+            </div>
+        </div>
+    </form>
+    <br>
+    <br>
 
-    <div class="center">
-        <table class="highlight centered responsive-table">
-            <thead>
-                <tr>
-                    <th><center>ToDo</center></th>
-                    <th><center>Status</center></th>
-                    <th><center>Delete</center></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for i in todo_list %}
-                    {% if i.status %}
+    {% if todo_list %}
+
+        <div class="center">
+            <table class="highlight centered responsive-table">
+                <thead>
                     <tr>
-                        <td style="text-decoration: line-through;"><center>{{ i.item }}</center></td>
-                        <td><center><a href="{% url 'todolist:checkoff' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">REDO</button></a></center></td>
-                        <td><center><a href="{% url 'todolist:delete' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DELETE</button></a></center></td>
+                        <th><center>ToDo</center></th>
+                        <th><center>Status</center></th>
+                        <th><center>Delete</center></th>
                     </tr>
-                    {% else %}
-                    <tr>
-                        <td><center>{{ i.item }}</center></td>
-                        <td><center><a href="{% url 'todolist:checkon' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DONE</button></a></center></td>
-                        <td><center><a href="{% url 'todolist:delete' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DELETE</button></a></center></td>
-                    </tr>
-                    {% endif %}
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    {% for i in todo_list %}
+                        {% if i.status %}
+                        <tr>
+                            <td style="text-decoration: line-through;"><center>{{ i.item }}</center></td>
+                            <td><center><a href="{% url 'todolist:checkoff' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">REDO</button></a></center></td>
+                            <td><center><a href="{% url 'todolist:delete' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DELETE</button></a></center></td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><center>{{ i.item }}</center></td>
+                            <td><center><a href="{% url 'todolist:checkon' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DONE</button></a></center></td>
+                            <td><center><a href="{% url 'todolist:delete' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DELETE</button></a></center></td>
+                        </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    {% endif %}
+{% else %}
+
+        {% if login_forms %}
+            <form class="center" action="{% url 'account:login' %}" method="POST">
+                {% csrf_token %}
+                {{login_forms}}
+                <input type="submit" name="login" value="login" class="btn red">
+            </form>
+        {% endif %}
 
 {% endif %}
-
 {% endblock %}

@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', todoview, name='index'),
     path('todolist/', include('todolist.urls')),
+    path('account/', include('account.urls'))
 ]

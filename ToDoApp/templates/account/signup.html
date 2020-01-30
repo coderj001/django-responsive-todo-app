@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %} Signup {% endblock %}
+
+{% block content %}
+
+    <h3>Signup</h3>
+    {% if forms %}
+    <form class="center" action="" method="POST">
+        {% csrf_token %}
+        {{forms}}
+        <br><br><br>
+        <input type="submit" name="submit" class="btn btn-large pulse red">
+    </form>
+    {% endif %}
+
+{% endblock %}
