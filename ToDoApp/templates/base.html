@@ -18,14 +18,22 @@
             <ul class="right hide-on-med-and-down">
                 <li class="z-depth-1"><a href="{% url 'todolist:todoview' %}">Home</a></li>
                 <li class="z-depth-1"><a href="{% url 'todolist:about' %}">About</a></li>
-                <li class="z-depth-1"><a href="#">Login</a></li>
+                {% if user.is_authenticated %}
+                <li class="z-depth-1"><a href="{% url 'account:logout' %}">Logout</a></li>
+                {% else %}
+                <li class="z-depth-1"><a href="{% url 'account:signup' %}">Signup</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
     <ul class="sidenav blue darken-2" id="mobile-links">
         <li class=""><a href="{% url 'todolist:todoview' %}">Home</a></li>
         <li class=""><a href="{% url 'todolist:about' %}">About</a></li>
-        <li class=""><a href="#">Login</a></li>
+        {% if user.is_authenticated %}
+        <li class=""><a href="{% url 'account:logout' %}">Logout</a></li>
+        {% else %}
+        <li class=""><a href="{% url 'account:signup' %}">Signup</a></li>
+        {% endif %}
     </ul>
     <div class="container">
         <br>
