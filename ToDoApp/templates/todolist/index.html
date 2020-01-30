@@ -10,7 +10,7 @@
     {% csrf_token %}
     <div class="row">
         <div class="col s8 input-field">
-            <label for="item"><b>Add To List:</b>></label>
+            <label for="item"><b>Add Task</b></label>
             <input type="text" name="item">
         </div>
         <div class="col s4">
@@ -38,7 +38,7 @@
                     <tr>
                         <td style="text-decoration: line-through;"><center>{{ i.item }}</center></td>
                         <td><center><a href="{% url 'todolist:checkoff' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">REDO</button></a></center></td>
-                        <td><center><a href="{% url 'todolist:delete' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DELETE</button>DELETE</a></center></td>
+                        <td><center><a href="{% url 'todolist:delete' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DELETE</button></a></center></td>
                     </tr>
                     {% else %}
                     <tr>
