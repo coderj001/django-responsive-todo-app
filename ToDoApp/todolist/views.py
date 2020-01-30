@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import ToDoList
 from .forms import FormToDoList
 
@@ -15,3 +15,20 @@ def todoview(req):
 
 def about(req):
     return render(req, 'todolist/about.html',{})
+
+def checkOff(req, list_id):
+    todo_list=ToDoList.objects.get(pk=list_id)
+    todo_list.status=False
+    todo_list.save()
+    return redirect('index')
+
+def checkOn(req, list_id):
+    todo_list=ToDoList.objects.get(pk=list_id)
+    todo_list.status=True
+    todo_list.save()
+    return redirect('index')
+
+def delete(req, list_id):
+    todo_list=ToDoList.objects.get(pk=list_id)
+    todo_list.delete()
+    return redirect('index')

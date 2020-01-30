@@ -9,7 +9,7 @@
 <form action="{% url 'todolist:todoview' %}" class="center" method="POST">
     {% csrf_token %}
     <div class="row">
-        <div class="col s8 ">
+        <div class="col s8 input-field">
             <label for="item"><b>Add To List:</b>></label>
             <input type="text" name="item">
         </div>
@@ -37,14 +37,14 @@
                     {% if i.status %}
                     <tr>
                         <td style="text-decoration: line-through;"><center>{{ i.item }}</center></td>
-                        <td><center><button class="btn"><a href="#" style="color: aliceblue;">REDO</a></button></center></td>
-                        <td><center><button class="btn"><a href="#" style="color: aliceblue;">DELETE</a></button></center></td>
+                        <td><center><a href="{% url 'todolist:checkoff' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">REDO</button></a></center></td>
+                        <td><center><a href="{% url 'todolist:delete' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DELETE</button>DELETE</a></center></td>
                     </tr>
                     {% else %}
                     <tr>
                         <td><center>{{ i.item }}</center></td>
-                        <td><center><button class="btn"><a href="#" style="color: aliceblue;">DONE</a></button></center></td>
-                        <td><center><button class="btn"><a href="#" style="color: aliceblue;">DELETE</a></button></center></td>
+                        <td><center><a href="{% url 'todolist:checkon' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DONE</button></a></center></td>
+                        <td><center><a href="{% url 'todolist:delete' i.id %}" style="color: aliceblue;"><button class="btn waves-effect waves-light">DELETE</button></a></center></td>
                     </tr>
                     {% endif %}
                 {% endfor %}
