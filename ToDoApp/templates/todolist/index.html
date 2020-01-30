@@ -17,5 +17,40 @@
         </div>
     </div>
 </form>
+<br>
+<br>
+
+{% if todo_list %}
+
+    <div class="center">
+        <table class="highlight centered responsive-table">
+            <thead>
+                <tr>
+                    <th><center>ToDo</center></th>
+                    <th><center>Status</center></th>
+                    <th><center>Delete</center></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in todo_list %}
+                    {% if status %}
+                    <tr>
+                        <td><center>{{ i.item }}</center></td>
+                        <td><center><button class="btn"><a href="#" style="color: aliceblue;">REDO</a></button></center></td>
+                        <td><center><button class="btn"><a href="#" style="color: aliceblue;">DELETE</a></button></center></td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td><center>{{ i.item }}</center></td>
+                        <td><center><button class="btn"><a href="#" style="color: aliceblue;">DONE</a></button></center></td>
+                        <td><center><button class="btn"><a href="#" style="color: aliceblue;">DELETE</a></button></center></td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endif %}
 
 {% endblock %}

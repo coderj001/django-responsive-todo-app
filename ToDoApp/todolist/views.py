@@ -3,7 +3,7 @@ from .models import ToDoList
 # Create your views here.
 
 def todoview(req):
-    todo_list=ToDoList()
+    todo_list=ToDoList.objects.all()
     return render(req, 'todolist/index.html', {'todo_list': todo_list})
 
 def about(req):
