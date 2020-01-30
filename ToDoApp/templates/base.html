@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo | {% block title %} {% endblock %}</title>
+</head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<body class="blue lighten-4">
+    <nav class="blue darken-2">
+        <div class="nav-wraper">
+            <div class="brand-logo"><i class="material-icons" style="font-size: xx-large; padding-top: 5px; padding-left: 2px;">today</i><span class="flow-text">TODOAPP</span></div>
+            <a href="" class="sidenav-trigger" data-target="mobile-links">
+                <i class="material-icons">menu</i>
+            </a>
+            <ul class="right hide-on-med-and-down">
+                <li class="z-depth-1"><a href="{% url 'todolist:todoview' %}">Home</a></li>
+                <li class="z-depth-1"><a href="{% url 'todolist:about' %}">About</a></li>
+                <li class="z-depth-1"><a href="#">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+    <ul class="sidenav blue darken-2" id="mobile-links">
+        <li class=""><a href="{% url 'todolist:todoview' %}">Home</a></li>
+        <li class=""><a href="{% url 'todolist:about' %}">About</a></li>
+        <li class=""><a href="#">Login</a></li>
+    </ul>
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+<script>
+    var elem = document.querySelector('.sidenav');
+    var instance = new M.Sidenav(elem);
+    $(document).ready(function(){
+        $('.sidenav').sidenav();
+    });
+</script>
+</html>

@@ -5,3 +5,6 @@ from .models import ToDoList
 def todoview(req):
     todo_list=ToDoList()
     return render(req, 'todolist/index.html', {'todo_list': todo_list})
+
+def about(req):
+    return render(req, 'todolist/about.html',{})
