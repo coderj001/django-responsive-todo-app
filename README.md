@@ -14,8 +14,8 @@ I am bignner django developer I have previously also created few django applicat
 ![short4](https://i.imgur.com/T7qcpWo.png)
 
 #### Mobile View
-![short2](https://imgur.com/nPttumo.png =411x823)
-![short3](https://imgur.com/3PDgRkg.png =411x823)
+![short2](https://imgur.com/nPttumo.png)
+![short3](https://imgur.com/3PDgRkg.png)
 
 ### Tech/framework used
 
