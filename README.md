@@ -21,9 +21,9 @@ I am bignner django developer I have previously also created few django applicat
 
 #### Build with
 
-    ... [Django](https://www.djangoproject.com/)
-    ... [Jquery](https://code.jquery.com/)
-    ... [Materializecss](https://materializecss.com)
+   1. [Django](https://www.djangoproject.com/)
+   2. [Jquery](https://code.jquery.com/)
+   3. [Materializecss](https://materializecss.com)
 
 ### Features
 
